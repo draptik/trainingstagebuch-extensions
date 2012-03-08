@@ -1,0 +1,23 @@
+#TITLE: Trainingstagebuch.org extension ideas
+
+* Ideas
+
+** Statistics
+
+** Multifile Uploader
+
+* Ruby On Rails
+** Initial setup
+** Versions
+*** Ruby
+*** Rails
+** Infrastructure
+*** DB: MySQL
+*** Trainingstagebuch API
+	* Active Resource http://api.rubyonrails.org/files/activeresource/README_rdoc.html
+** Deployment
+*** Heroku
+** Domain model
+*** User
+	* Name, EMail, Password
+	* TTB Name, TTB Password
