@@ -1,5 +1,9 @@
 #TITLE: Trainingstagebuch.org extension ideas
 
+Using the public API of http://trainingstagebuch.org/
+
+The API is documented at ...
+
 * Ideas
 
 ** Statistics
