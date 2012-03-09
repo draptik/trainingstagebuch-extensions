@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-TtbExtensions::Application.load_tasks
+TrainingstagebuchExtensions::Application.load_tasks
