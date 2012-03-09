@@ -4,6 +4,8 @@ Using the public API of http://trainingstagebuch.org/
 
 The API is documented at ...
 
+Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
+
 * Ideas
 
 ** Statistics
