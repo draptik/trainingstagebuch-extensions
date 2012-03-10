@@ -35,4 +35,10 @@ TrainingstagebuchExtensions::Application.configure do
 
   config.serve_static_assets = true
   config.static_cache_control = "public, max-age=3600"
+
+  require 'bcrypt'
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+  end
+
 end

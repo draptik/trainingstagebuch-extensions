@@ -21,6 +21,8 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
+gem 'therubyracer', '>=0.8.2' # required!!
+
 gem 'jquery-rails', '2.0.0'
 
 group :test do
