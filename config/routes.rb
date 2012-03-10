@@ -1,17 +1,14 @@
 TrainingstagebuchExtensions::Application.routes.draw do
-  get "pages/home"
+  get "static_pages/home"
+  get "static_pages/contact"
+  get "static_pages/about"
+  get "static_pages/help"
 
-  get "pages/contact"
+  match '/contact', :to => 'static_pages#contact'
+  match '/about',   :to => 'static_pages#about'
+  match '/help',    :to => 'static_pages#help'
 
-  get "pages/about"
-
-  get "pages/help"
-
-  match '/contact', :to => 'pages#contact'
-  match '/about',   :to => 'pages#about'
-  match '/help',    :to => 'pages#help'
-
-  root :to => 'pages#home'
+  root :to => 'static_pages#home'
 
 
   # The priority is based upon order of creation:

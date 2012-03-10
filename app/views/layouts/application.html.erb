@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <%= csrf_meta_tag %>
+    <title>Trainingstagebuch Extensions | <%= yield(:title) %></title>
     <%= render 'layouts/stylesheets' %>
+    <%= csrf_meta_tag %>
   </head>
   <body>
     <div class="container">
