@@ -1,7 +1,7 @@
 TrainingstagebuchExtensions::Application.routes.draw do
 
   resources :users
-  # get "users/new"
+  resources :sessions, only: [:new, :create, :destroy]
 
   root :to => 'static_pages#home'
 
@@ -11,6 +11,8 @@ TrainingstagebuchExtensions::Application.routes.draw do
   get "static_pages/help"
 
   match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/contact', to: 'static_pages#contact'
   match '/about',   to: 'static_pages#about'
