@@ -24,6 +24,7 @@ Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
 *** Commands in shells
 	* bundle exec guard
 	* rails server
+	* bundle exec annotate --position before
 ** Versions
    * rvm 1.10.3
    * Ruby ruby 1.9.3p125 (2012-02-16 revision 34643) [x86_64-linux]
