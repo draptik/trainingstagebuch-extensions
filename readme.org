@@ -6,7 +6,7 @@ The API is documented at ...
 
 Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
 
-* Ideas
+* Ideas / Feature Requests
 
 ** Statistics
 
@@ -34,3 +34,20 @@ Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
 ** Deployment
    Heroku
 	  
+
+
+* Milestones
+
+** Version 0.1
+   * User Management
+	 * Secure Login, HTTPS
+	 * Admin can:
+	   * see all users
+	   * delete users
+
+** Version 0.9
+   * TBB API connection via Rails using Restful WebService
+	 * Active Resource http://api.rubyonrails.org/files/activeresource/README_rdoc.html
+
+** Version 1
+   * TTB API Multifile upload via WebInterface
