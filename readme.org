@@ -13,6 +13,17 @@ Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
 ** Multifile Uploader
 
 * Ruby On Rails
+** Development
+*** Shells
+	* git: version control
+	* bundler: gem management
+	* rails server: live preview
+	* guard: on the fly testing
+*** RVM
+	Each shell requires: rvm use 1.9.3@ttb-ext
+*** Commands in shells
+	* bundle exec guard
+	* rails server
 ** Initial setup
 ** Versions
 *** Ruby
