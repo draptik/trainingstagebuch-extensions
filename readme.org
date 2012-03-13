@@ -15,27 +15,21 @@ Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
 * Ruby On Rails
 ** Development
 *** Shells
-	* git: version control
-	* bundler: gem management
+	* Git: version control
+	* Bundler: gem management
+	* Guard: on the fly testing with RSpec/Spork
 	* rails server: live preview
-	* guard: on the fly testing
 *** RVM
 	Each shell requires: rvm use 1.9.3@ttb-ext
 *** Commands in shells
 	* bundle exec guard
 	* rails server
-** Initial setup
 ** Versions
-*** Ruby
-*** Rails
-** Infrastructure
-*** DB: MySQL
-*** Trainingstagebuch API
-	* Active Resource http://api.rubyonrails.org/files/activeresource/README_rdoc.html
+   * rvm 1.10.3
+   * Ruby ruby 1.9.3p125 (2012-02-16 revision 34643) [x86_64-linux]
+   * Rails 3.2.2
+** Trainingstagebuch API
+   * Active Resource http://api.rubyonrails.org/files/activeresource/README_rdoc.html
 ** Deployment
-*** Heroku
-** Domain model
-*** User
-	* Name, EMail, Password
-	* TTB Name, TTB Password
+   Heroku
 	  
