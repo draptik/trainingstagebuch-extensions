@@ -4,7 +4,7 @@ describe "Static pages" do
 
   ## All tests are applied to 'page'.
   ## 
-  ## This is a shorthand:
+  ## "subject { page }" is a shorthand:
   ## 
   ##   page.should have_selector
   ##
