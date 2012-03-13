@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
 
   before_save :create_remember_token
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   private
 
     def create_remember_token

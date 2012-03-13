@@ -42,5 +42,5 @@ describe "Authentication" do
       
       it { should have_link('Sign out', href: signout_path) }
     end
-  
+  end
 end
