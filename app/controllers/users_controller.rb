@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
+  # before_filter :admin_user, only: [:index]
 
   def create
     @user = User.new(params[:user])
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
   end
 
   private
@@ -50,6 +52,13 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
+    end
+
+    def admin_user
+      signed_in_user
+      unless admin_user?
+        redirect_to @user, notice: "No admin rights."
+      end
     end
 
 end
