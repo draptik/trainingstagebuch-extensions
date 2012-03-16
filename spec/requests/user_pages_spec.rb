@@ -4,6 +4,7 @@ describe "UserPages" do
 
   subject { page }
 
+  # Page: Sign up ===================================================
   describe "signup page" do
     before { visit signup_path }
 
@@ -11,7 +12,7 @@ describe "UserPages" do
     it { should have_selector('title', text: full_title('Sign up')) }
   end
 
-
+  # Page: Profile ===================================================
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }
@@ -22,6 +23,7 @@ describe "UserPages" do
 
 
 
+  # Signup ==========================================================
   describe "signup" do
 
     before { visit signup_path }
@@ -65,6 +67,7 @@ describe "UserPages" do
 
   end
 
+  # Edit ============================================================
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do
@@ -102,4 +105,33 @@ describe "UserPages" do
       specify { user.reload.email.should == new_email }
     end
   end
+
+  # Index ===========================================================
+  describe "index" do
+    
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      sign_in user
+      visit users_path
+    end
+
+    it { should have_selector('title', text: 'All users') }
+
+    describe "pagination" do
+      before(:all) { 30.times { FactoryGirl.create(:user) } }
+      after(:all)  { User.delete_all }
+
+      it { should have_link('Next') }
+      it { should have_link('2') }
+
+      it "should list each user on the first paginated page" do
+        User.all[0..2].each do |user|
+          page.should have_selector('li', text: user.name)
+        end
+      end
+    end
+
+  end # end index
+
 end
