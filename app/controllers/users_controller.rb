@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
-  # before_filter :admin_user, only: [:index]
+  before_filter :admin_user,     only: [:destroy]
 
   def create
     @user = User.new(params[:user])
@@ -61,10 +61,7 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      signed_in_user
-      unless admin_user?
-        redirect_to @user, notice: "No admin rights."
-      end
+      redirect_to(root_path) unless current_user.admin?
     end
 
 end
