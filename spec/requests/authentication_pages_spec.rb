@@ -119,18 +119,12 @@ describe "Authentication" do
 
       before { sign_in non_admin }
 
-      # describe "submitting a DELETE request to the Users#destroy action" do
-      #   before { delete user_path(user) }
-      #   specify { response.should redirect_to(root_path) }        
-      # end
-
-
-      describe "visiting the Users#index page" do
-        # it { should_have visit users_path(user) } # 
-        # expect denial
+      describe "submitting a DELETE request to the Users#destroy action" do
+        before { delete user_path(user) }
+        specify { response.should redirect_to(root_path) }        
       end
-
     end
+
   end
 
 end
