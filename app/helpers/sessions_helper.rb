@@ -26,6 +26,9 @@ module SessionsHelper
     user == current_user
   end
 
+  def admin_user?
+    signed_in? && current_user.admin?
+  end
 
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
@@ -36,7 +39,6 @@ module SessionsHelper
     session[:return_to] = request.fullpath
   end
 
-  
   private
     def user_from_remember_token
       remember_token = cookies[:remember_token]
