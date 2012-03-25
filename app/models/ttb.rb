@@ -23,12 +23,12 @@ class Ttb
   def login(username, password)
     # TODO Add error checking
     @response = Ttb.get("/login/sso",
-                        :query => {"user" => username, "pass" => password, "view" => "json"})
+                        :query => query_json("user" => username, "pass" => password))
   end
 
   def sports
     # TODO Add error checking
-    @sports = Ttb.get("/sports/list", :query => {"sso" => session, "view" => "json"})
+    @sports = Ttb.get("/sports/list", :query => query_sso)
   end
 
   # PRIVATE =========================================================
@@ -39,4 +39,16 @@ class Ttb
     @response["session"]
   end
 
+  def query
+    @query_json = {"view" => "json"}
+  end
+
+  def query_json(query_hash)
+    # TODO Add error checking
+    @query = query.merge(query_hash)
+  end
+
+  def query_sso
+    @query_sso = query.merge("sso" => session)
+  end
 end
