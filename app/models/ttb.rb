@@ -1,3 +1,7 @@
+# This class is a pure Ruby class.
+# 
+# ==> Rails::ActiveRecord methods can't be used by this class!
+# 
 # Usage example:
 # 
 # $rails console
@@ -27,8 +31,8 @@ class Ttb
 
   def login(username, password)
     # TODO Add error checking
-    @response = Ttb.get("/login/sso",
-                        :query => query_json("user" => username, "pass" => password))
+    options = {:query => query_json("user" => username, "pass" => password)}
+    @response = Ttb.get("/login/sso", options)
   end
 
   def pull_sports
