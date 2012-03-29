@@ -48,6 +48,8 @@ Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
 ** Version 0.9
    * TBB API connection via Rails using Restful WebService
 	 * Active Resource http://api.rubyonrails.org/files/activeresource/README_rdoc.html
+   * TBB API connection via HTTParty
+	 * HTTParty http://httparty.rubyforge.org/
 
 ** Version 1
    * TTB API Multifile upload via WebInterface
