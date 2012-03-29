@@ -3,7 +3,7 @@
 # $rails console
 # > ttb = Ttb.new
 # > ttb.login("username", "password")
-# > ttb.sports
+# > ttb.update_sports
 # > quit
 class Ttb
 
