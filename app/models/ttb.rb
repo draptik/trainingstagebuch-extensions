@@ -3,7 +3,7 @@
 # $rails console
 # > ttb = Ttb.new
 # > ttb.login("username", "password")
-# > ttb.update_sports
+# > ttb.pull_sports
 # > quit
 class Ttb
 
@@ -31,7 +31,7 @@ class Ttb
                         :query => query_json("user" => username, "pass" => password))
   end
 
-  def update_sports
+  def pull_sports
     sports_json = Ttb.get("/sports/list", :query => query_sso)
 
     sports_json["sports"].each do |s|
