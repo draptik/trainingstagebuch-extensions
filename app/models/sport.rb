@@ -10,7 +10,7 @@
 #  updated_at :datetime        not null
 #
 
-class Sports < ActiveRecord::Base
+class Sport < ActiveRecord::Base
 
   attr_accessible :id, :name, :comment, :lastchange
   validates :id, presence: true, uniqueness: true

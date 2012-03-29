@@ -48,11 +48,11 @@ class Ttb
         :lastchange => s["lastchange"]
       }
 
-      sport_json = Sports.new(attr)
+      sport_json = Sport.new(attr)
 
       # TODO Replace with Rails idiom
       begin 
-        sport_db = Sports.find(sport_json.id) # can throw exception...
+        sport_db = Sport.find(sport_json.id) # can throw exception...
         sport_db.update_attributes(attr)
       rescue # catch if record was not found and exception was thrown...
         sport_db = sport_json
