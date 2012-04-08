@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404165027) do
+ActiveRecord::Schema.define(:version => 20120408225123) do
 
   create_table "sports", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(:version => 20120404165027) do
     t.datetime "lastchange"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "sports_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "sport_id"
   end
 
   create_table "users", :force => true do |t|
@@ -34,10 +39,5 @@ ActiveRecord::Schema.define(:version => 20120404165027) do
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-
-  create_table "users_sports", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "sport_id"
-  end
 
 end

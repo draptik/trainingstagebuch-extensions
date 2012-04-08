@@ -62,6 +62,39 @@ class Ttb
     end # sports_json["sports"].each do |s|
   end # sports
 
+
+  # def pull_materials
+  #   materials_json = Ttb.get("/materials/list", :query => query_sso)
+
+  #   materials_json["materials"].each do |s|
+
+  #     # 'adapter' mapping
+  #     attr = {
+  #       :id => s["id"],
+  #       :name => s["name"],
+  #       :status => s["status"],
+  #       :comment => s["comment"],
+  #       :count => s["count"],
+  #       :duration => s["duration"],
+  #       :distancekm => s["distance-km"],
+  #       :lastchange => s["lastchange"]
+  #     }
+
+  #     material_json = Material.new(attr)
+
+  #     # TODO Replace with Rails idiom
+  #     begin 
+  #       material_db = Material.find(material_json.id) # can throw exception...
+  #       material_db.update_attributes(attr)
+  #     rescue # catch if record was not found and exception was thrown...
+  #       material_db = material_json
+  #     end
+
+  #     material_db.save
+  #   end # materials_json["materials"].each do |s|
+    
+  # end
+
   # PRIVATE =========================================================
   private
 

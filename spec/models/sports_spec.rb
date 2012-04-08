@@ -1,8 +1,3 @@
-require 'spec_helper'
-
-describe Sports do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
 # == Schema Information
 #
 # Table name: sports
@@ -14,4 +9,17 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
+require 'spec_helper'
 
+describe Sport do
+
+  before { @sport = Sport.new(name: "Hiking", comment: "", lastchange: "2012-04-01 1:00:00") }
+
+  subject { @sport }
+
+  it { should respond_to(:name) }
+  it { should respond_to(:comment) }
+  it { should respond_to(:lastchange) }
+
+
+end
