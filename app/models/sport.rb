@@ -15,5 +15,5 @@ class Sport < ActiveRecord::Base
   
   attr_accessible :id, :name, :comment, :lastchange
   validates :id, presence: true, uniqueness: true
-
+  validates :name, presence: true
 end

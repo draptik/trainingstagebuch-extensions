@@ -8,5 +8,10 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    # factory :sport do
+    #   name "Sky Diving"
+    #   users
+    # end
   end
 end
