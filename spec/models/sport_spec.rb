@@ -21,5 +21,4 @@ describe Sport do
   it { should respond_to(:comment) }
   it { should respond_to(:lastchange) }
 
-
 end
