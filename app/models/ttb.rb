@@ -67,24 +67,18 @@ class Ttb
         sport_db = sport_json
       end
 
-      if (@debug)
-        debug_helper "CNT: #{cnt} DEBUG 1 AFTER TRY/CATCH"
-        debug_helper user
-      end
+      debug_helper "CNT: #{cnt} DEBUG 1 AFTER TRY/CATCH"
+      debug_helper user
       
       sport_db.users << user
 
-      if (@debug)
-        debug_helper "CNT: #{cnt} DEBUG 2 AFTER TRY/CATCH"
-        debug_helper sport_db.users
-        debug_helper "CNT: #{cnt} DEBUG 3 AFTER TRY/CATCH"
-      end
+      debug_helper "CNT: #{cnt} DEBUG 2 AFTER TRY/CATCH"
+      debug_helper sport_db.users
+      debug_helper "CNT: #{cnt} DEBUG 3 AFTER TRY/CATCH"
 
       sport_db.save
 
-      if (@debug)
-        cnt += 1
-      end
+      cnt += 1 if (@debug)
 
     end # sports_json["sports"].each do |s|
   end # sports
