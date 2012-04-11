@@ -38,14 +38,14 @@ Current staging system at: http://trainingstagebuch-ext-stage.heroku.com/
 
 * Milestones
 
-** Version 0.1
+** DONE Version 0.1
    * User Management
 	 * Secure Login, HTTPS
 	 * Admin can:
 	   * see all users
 	   * delete users
 
-** Version 0.9
+** DONE Version 0.9
    * TBB API connection via Rails using Restful WebService
 	 * Active Resource http://api.rubyonrails.org/files/activeresource/README_rdoc.html
    * TBB API connection via HTTParty
