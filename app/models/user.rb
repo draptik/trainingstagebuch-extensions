@@ -16,7 +16,7 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :sports
   
-  attr_accessible :name, :email, :password, :password_confirmation, :nickname
+  attr_accessible :name, :email, :password, :password_confirmation, :nickname, :ttb_password
   has_secure_password
 
   validates :name, presence: true, length: { maximum: 50 }

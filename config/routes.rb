@@ -1,7 +1,13 @@
 TrainingstagebuchExtensions::Application.routes.draw do
 
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  
+  resources :users do
+    member do
+      get 'import_sports'
+    end
+  end
+
+  resources :sessions , only: [:new, :create, :destroy]
 
   root :to => 'static_pages#home'
 
@@ -18,7 +24,10 @@ TrainingstagebuchExtensions::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/help',    to: 'static_pages#help'
 
+  resources :ttb_sessions, only: [:new, :create, :destroy]
+  match '/import', to: 'ttb_sessions#new'
 
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

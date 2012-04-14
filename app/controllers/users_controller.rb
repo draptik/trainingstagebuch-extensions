@@ -46,6 +46,23 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def import_sports
+    # ttb_pw   = params[:ttb_password]
+    # pp "XXXXXXXXXXXXXXX"
+    # pp params
+    # ttb = Ttb.new
+    # if ttb.login(current_user.nickname, ttb_pw)
+    #   if ttb.pull_sports(current_user.id)  
+    #     flash[:success] = "Sports imported successfully."
+    #   else
+    #     flash[:error] = "Sports import failed."
+    #   end
+    # else
+    #   flash[:error] = "Login to TTB failed."
+    # end
+  end
+
+
   private
 
     def signed_in_user
