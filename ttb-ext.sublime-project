@@ -33,9 +33,6 @@
 		},
 		{
 			"path": "vendor"
-		},
-		{
-			"path": "/home/patrick/incubator/trainingstagebuch-extensions"
 		}
 	]
 }
