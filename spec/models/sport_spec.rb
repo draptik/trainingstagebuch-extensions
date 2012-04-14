@@ -34,24 +34,8 @@ describe Sport do
     it { should_not be_valid }
   end
 
-  # describe "when name is present" do
-  #   before { @sport.name = "fpp" }
-  #   puts "XXXXX"
-  #   pp @sport
-  #   it { should be_valid }
-  # end
-  
+  describe "when sport_id is not present" do
+    before { @sport.sport_id = nil }
+    it { should_not be_valid }
+  end 
 end
-# == Schema Information
-#
-# Table name: sports
-#
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  comment    :string(255)
-#  lastchange :datetime
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  sport_id   :integer
-#
-
