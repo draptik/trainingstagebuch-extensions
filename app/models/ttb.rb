@@ -12,6 +12,12 @@
 class Ttb
 
   include HTTParty
+  
+  # http://railscasts.com/episodes/219-active-model
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
+
 
   # attr_* assignes instance variable
   #
