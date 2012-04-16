@@ -123,7 +123,7 @@ class Ttb
     @query_sso = query.merge(:sso => session)
   end
 
-
+  # many-to-many
   def sport_mapping(sport_entry)
     attr = {
       :sport_id   => sport_entry["id"],
@@ -133,6 +133,7 @@ class Ttb
     }
   end
 
+  # one-to-many (one user has-many materials)
   def material_mapping(mapping_entry)
     attr = {
       :id         => s["id"],
