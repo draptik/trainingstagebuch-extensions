@@ -47,19 +47,19 @@ class UsersController < ApplicationController
   end
 
   def import_sports
-    # ttb_pw   = params[:ttb_password]
-    # pp "XXXXXXXXXXXXXXX"
-    # pp params
-    # ttb = Ttb.new
-    # if ttb.login(current_user.nickname, ttb_pw)
-    #   if ttb.pull_sports(current_user.id)  
-    #     flash[:success] = "Sports imported successfully."
-    #   else
-    #     flash[:error] = "Sports import failed."
-    #   end
-    # else
-    #   flash[:error] = "Login to TTB failed."
-    # end
+    @user = User.find(params[:id])
+    ttb_pw   = retrieve_ttb_password
+    puts ttb_pw
+    ttb = Ttb.new
+    if ttb.login(current_user.nickname, ttb_pw)
+      if ttb.pull_sports(current_user.id)  
+        flash[:success] = "Sports imported successfully."
+      else
+        flash[:error] = "Sports import failed."
+      end
+    else
+      flash[:error] = "Login to TTB failed."
+    end
   end
 
 
