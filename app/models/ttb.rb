@@ -29,7 +29,7 @@ class Ttb
   self.default_params output: 'json'
   self.format :json
 
-  def initialize(dbg=false)
+  def initialize(dbg=true)
     @debug = dbg
   end
 
@@ -48,6 +48,8 @@ class Ttb
     debug_helper user
 
     cnt = 0 if @debug
+
+    return_value = false
 
     sports_json["sports"].each do |sport_entry|
       debug_helper "STARTING CNT: #{cnt}"
@@ -70,17 +72,27 @@ class Ttb
       debug_helper "CNT: #{cnt} DEBUG 1 AFTER TRY/CATCH"
       debug_helper user
       
+      debug_helper "Current Sport object: #{sport_db}"
       sport_db.users << user
 
       debug_helper "CNT: #{cnt} DEBUG 2 AFTER TRY/CATCH"
       debug_helper sport_db.users
       debug_helper "CNT: #{cnt} DEBUG 3 AFTER TRY/CATCH"
 
-      sport_db.save
+      debug_helper "Current sport_json is: #{sport_json}"
+      debug_helper "Current sport_json.id is: #{sport_json.id}"
+      debug_helper "Current sport_db is: #{sport_db}"
+      debug_helper "Current sport_db.sport_id is: #{sport_db.id}"
+      debug_helper "Current sport_db.name is: #{sport_db.name}"
+      debug_helper "Current sport_db.users is: #{sport_db.users}"
+      return_value = sport_db.save
+      debug_helper "Current return_value is: #{return_value}"
 
       cnt += 1 if (@debug)
 
     end # sports_json["sports"].each do |s|
+    
+    #return return_value
   end # sports
 
 
@@ -108,7 +120,7 @@ class Ttb
 
   def sport_mapping(sport_entry)
     attr = {
-      :id         => sport_entry["id"],
+      :sport_id   => sport_entry["id"],
       :name       => sport_entry["name"],
       :comment    => sport_entry["comment"],
       :lastchange => sport_entry["lastchange"]
@@ -130,8 +142,8 @@ class Ttb
 
   def debug_helper(content)
     if @debug
-      pp "DEBUG:"
-      pp content
+      puts "DEBUG:"
+      puts content
     end
   end
 end
