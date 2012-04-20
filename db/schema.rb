@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414100040) do
+ActiveRecord::Schema.define(:version => 20120420141837) do
+
+  create_table "materials", :force => true do |t|
+    t.integer  "material_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "status"
+    t.string   "comment"
+    t.integer  "count"
+    t.decimal  "duration"
+    t.decimal  "distance_km"
+    t.datetime "lastchange"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "materials", ["user_id", "material_id"], :name => "index_materials_on_user_id_and_material_id"
 
   create_table "sports", :force => true do |t|
     t.string   "name"

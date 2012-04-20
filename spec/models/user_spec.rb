@@ -31,7 +31,7 @@ describe User do
   it { should respond_to(:admin) }
   it { should respond_to(:nickname) }
   it { should respond_to(:sports) }
-  # it { should respond_to(:materials) }
+  it { should respond_to(:materials) }
 
   it { should respond_to(:remember_token) }
 
@@ -125,5 +125,28 @@ describe User do
     before { @user.toggle!(:admin) }
 
     it { should be_admin }
+  end
+
+
+  describe "materials associations" do
+    before { @user.save }
+    let!(:smaller_material) do 
+      FactoryGirl.create(:material, user: @user, material_id: 1)
+    end
+    let!(:larger_material) do
+      FactoryGirl.create(:material, user: @user, material_id: 2)
+    end
+
+    it "should have the right materials in the right order" do
+      @user.materials.should == [smaller_material, larger_material]
+    end
+
+    it "should destroy associated materials" do
+      materials = @user.materials
+      @user.destroy
+      materials.each do |material|
+        Material.find_by_id(material.id).should be_nil
+      end
+    end
   end
 end

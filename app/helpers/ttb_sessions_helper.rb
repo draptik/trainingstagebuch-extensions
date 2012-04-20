@@ -1,7 +1,7 @@
 module TtbSessionsHelper
 
 		# TODO Add error checking
-		# TODO Nowbody should be able to inject!
+		# TODO Nobody should be able to inject!
     def store_ttb_password(ttb_password)
     	session[:ttb_password] = ttb_password
   	end

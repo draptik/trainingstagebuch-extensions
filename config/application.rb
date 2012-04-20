@@ -50,5 +50,7 @@ module TrainingstagebuchExtensions
  
     # Change the path that assets are served from
     # config.assets.prefix = "/assets"
+
+    config.active_record.whitelist_attributes = true
   end
 end

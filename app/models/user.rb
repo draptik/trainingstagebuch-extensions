@@ -15,6 +15,7 @@
 
 class User < ActiveRecord::Base
   has_and_belongs_to_many :sports
+  has_many :materials, dependent: :destroy
   
   attr_accessible :name, :email, :password, :password_confirmation, :nickname, :ttb_password
   has_secure_password
