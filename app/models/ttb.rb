@@ -136,13 +136,13 @@ class Ttb
   # one-to-many (one user has-many materials)
   def material_mapping(mapping_entry)
     attr = {
-      :id         => s["id"],
+      :material_id => s["id"],
       :name       => s["name"],
       :status     => s["status"],
       :comment    => s["comment"],
       :count      => s["count"],
       :duration   => s["duration"],
-      :distancekm => s["distance-km"],
+      :distance_km => s["distance-km"],
       :lastchange => s["lastchange"]
     }
   end
