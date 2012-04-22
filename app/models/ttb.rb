@@ -102,6 +102,67 @@ class Ttb
   end # sports
 
 
+
+  def pull_materials(user_id)
+    debug_helper "Starting pull_materials..................."            
+    materials_json = Ttb.get("/material/list", :query => query_sso)
+
+    debug_helper "Checking user_id = #{user_id}..................."            
+    user = User.find(user_id) # TODO Refactor, Error Checking, Throw Exception...
+    debug_helper user
+
+    cnt = 0 if @debug
+
+    return_value = false
+
+    materials_json["material"].each do |material_entry|
+      debug_helper "STARTING CNT: #{cnt}"
+
+      attr = material_mapping(material_entry)
+
+      material_json = user.materials.build(attr)
+      debug_helper "(CNT: #{cnt}) Created material_json: #{material_json}"
+
+      # TODO Replace with Ruby idiom for Try/Catch
+      begin 
+        debug_helper "CNT: #{cnt} Entering TRY...."
+        material_db = material.find(material_json.id) # can throw exception...
+        material_db.update_attributes(attr)
+      rescue # catch if record was not found and exception was thrown...
+        debug_helper "CNT: #{cnt} CATCH!!!!"
+        material_db = material_json
+      end
+
+      debug_helper "CNT: #{cnt} DEBUG 1 AFTER TRY/CATCH"
+      debug_helper user
+      
+      debug_helper "Current material object: #{material_db}"
+      material_db.user = user
+
+      debug_helper "CNT: #{cnt} DEBUG 2 AFTER TRY/CATCH"
+      debug_helper material_db.user
+      debug_helper "CNT: #{cnt} DEBUG 3 AFTER TRY/CATCH"
+
+      debug_helper "Current material_json is: #{material_json}"
+      debug_helper "Current material_json.id is: #{material_json.id}"
+      debug_helper "Current material_db is: #{material_db}"
+      debug_helper "Current material_db.material_id is: #{material_db.id}"
+      debug_helper "Current material_db.name is: #{material_db.name}"
+      debug_helper "Current material_db.user is: #{material_db.user}"
+      return_value = material_db.save
+      debug_helper "Current return_value is: #{return_value}"
+
+      cnt += 1 if (@debug)
+
+    end # materials_json["material"].each do |s|
+    
+    #return return_value
+  end # materials
+
+
+
+
+
   # PRIVATE =========================================================
   private
 
@@ -134,16 +195,16 @@ class Ttb
   end
 
   # one-to-many (one user has-many materials)
-  def material_mapping(mapping_entry)
+  def material_mapping(material_entry)
     attr = {
-      :material_id => s["id"],
-      :name       => s["name"],
-      :status     => s["status"],
-      :comment    => s["comment"],
-      :count      => s["count"],
-      :duration   => s["duration"],
-      :distance_km => s["distance-km"],
-      :lastchange => s["lastchange"]
+      :material_id => material_entry["id"],
+      :name        => material_entry["name"],
+      :status      => material_entry["status"],
+      :comment     => material_entry["comment"],
+      :count       => material_entry["count"],
+      :duration    => material_entry["duration"],
+      :distance_km => material_entry["distance-km"],
+      :lastchange  => material_entry["lastchange"]
     }
   end
 

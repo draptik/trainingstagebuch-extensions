@@ -24,5 +24,7 @@ class Material < ActiveRecord::Base
 
 	validates :user_id, presence: true
 
+	validates_uniqueness_of :user_id, scope: :material_id
+
 	default_scope order: 'materials.material_id ASC'
 end
