@@ -10,12 +10,23 @@ FactoryGirl.define do
     end
   end
 
-    # factory :sport do
-    #   name "Sky Diving"
-    #   users
-    # end
+  # Many to many....
+  factory :sport do
+    name "Sky Diving"
+    comment "Crazy"
+    lastchange DateTime.now
+    users
+  end
+    
+  # Many to many....
+  factory :route do
+    name "Home Route"
+    route_id 42
+    km 42.00
+    #users
+  end
 
-
+  # One to many....
   factory :material do
     material_id "123"
     name "material1" 
@@ -26,4 +37,5 @@ FactoryGirl.define do
     lastchange Time.now
     user
   end
+
 end

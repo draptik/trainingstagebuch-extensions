@@ -101,8 +101,6 @@ class Ttb
     #return return_value
   end # sports
 
-
-
   def pull_materials(user_id)
     debug_helper "Starting pull_materials..................."            
     materials_json = Ttb.get("/material/list", :query => query_sso)
@@ -159,6 +157,62 @@ class Ttb
     #return return_value
   end # materials
 
+
+  def pull_routes(user_id)
+    debug_helper "Starting pull_routes..................."            
+    routes_json = Ttb.get("/routes/list", :query => query_sso)
+
+    debug_helper "Checking user_id = #{user_id}..................."            
+    user = User.find(user_id) # TODO Refactor, Error Checking, Throw Exception...
+    debug_helper user
+
+    cnt = 0 if @debug
+
+    return_value = false
+
+    routes_json["route"].each do |route_entry|
+      debug_helper "STARTING CNT: #{cnt}"
+
+      attr = route_mapping(route_entry)
+
+      route_json = user.routes.build(attr)
+      debug_helper "(CNT: #{cnt}) Created route_json: #{route_json}"
+
+      # TODO Replace with Ruby idiom for Try/Catch
+      begin 
+        debug_helper "CNT: #{cnt} Entering TRY...."
+        route_db = route.find(route_json.id) # can throw exception...
+        route_db.update_attributes(attr)
+      rescue # catch if record was not found and exception was thrown...
+        debug_helper "CNT: #{cnt} CATCH!!!!"
+        route_db = route_json
+      end
+
+      debug_helper "CNT: #{cnt} DEBUG 1 AFTER TRY/CATCH"
+      debug_helper user
+      
+      debug_helper "Current route object: #{route_db}"
+      route_db.user = user
+
+      debug_helper "CNT: #{cnt} DEBUG 2 AFTER TRY/CATCH"
+      debug_helper route_db.user
+      debug_helper "CNT: #{cnt} DEBUG 3 AFTER TRY/CATCH"
+
+      debug_helper "Current route_json is: #{route_json}"
+      debug_helper "Current route_json.id is: #{route_json.id}"
+      debug_helper "Current route_db is: #{route_db}"
+      debug_helper "Current route_db.route_id is: #{route_db.id}"
+      debug_helper "Current route_db.name is: #{route_db.name}"
+      debug_helper "Current route_db.user is: #{route_db.user}"
+      return_value = route_db.save
+      debug_helper "Current return_value is: #{return_value}"
+
+      cnt += 1 if (@debug)
+
+    end # routes_json["route"].each do |s|
+    
+    #return return_value
+  end # routes
 
 
 

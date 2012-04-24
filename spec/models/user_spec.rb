@@ -32,6 +32,7 @@ describe User do
   it { should respond_to(:nickname) }
   it { should respond_to(:sports) }
   it { should respond_to(:materials) }
+  it { should respond_to(:routes) }
 
   it { should respond_to(:remember_token) }
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120422192946) do
+ActiveRecord::Schema.define(:version => 20120424181707) do
 
   create_table "materials", :force => true do |t|
     t.integer  "material_id"
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(:version => 20120422192946) do
   end
 
   add_index "materials", ["user_id", "material_id"], :name => "index_materials_on_user_id_and_material_id", :unique => true
+
+  create_table "routes", :force => true do |t|
+    t.integer  "route_id"
+    t.string   "name"
+    t.decimal  "km"
+    t.string   "gpsies"
+    t.text     "comment"
+    t.datetime "lastchanged"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "routes", ["gpsies"], :name => "index_routes_on_gpsies"
+  add_index "routes", ["route_id"], :name => "index_routes_on_route_id"
+
+  create_table "routes_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "route_id"
+  end
 
   create_table "sports", :force => true do |t|
     t.string   "name"
